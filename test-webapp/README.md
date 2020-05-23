@@ -10,7 +10,7 @@ To execute this applicatio run the following command:
 
 `mvn jetty:run`
 
-This command starts a jetty server on port 8080. The application can be accessed in the address: http://localhost:8080/primefaces-test-webapp
+This command starts a jetty server on port 8080. To access the application open a browser in the address: http://localhost:8080/primefaces-test-webapp
 
 # Configuration
 
