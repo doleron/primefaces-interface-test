@@ -1,5 +1,13 @@
-![PrimeFaces icon](https://www.primefaces.org/wp-content/uploads/2016/10/prime_logo_new.png)
+This is an automation test suite project that uses for PrimeFaces JSF components.
 
-This is a automation test suite project that uses for PrimeFaces JSF components.
+To execute the test battery:
 
-Execute with <strong>mvn test</strong> command.
+- first run the primefaces-interface-test-webapp application 
+- execute: `mvn test`
+
+To generate surefire reports run the following commands:
+
+```
+$ mvn surefire-report:report-only
+$ mvn site -DgenerateReports=false
+```
