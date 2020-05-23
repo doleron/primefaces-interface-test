@@ -1,8 +1,8 @@
-#About
+# About
 
 This is a webapp maven project aiming to perform interface tests over PrimeFaces components.
 
-This is configured to use PrimeFaces 9.0-SNAPSHOT. Check the file pom.xml to change the primefaces version.
+This is configured to use PrimeFaces 9.0-SNAPSHOT version. Check the file pom.xml to change the primefaces version.
 
 # Runnning
 
