@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>PrimeFaces Test</title>
+    </h:head>
+    <h:body>
+    
+   		<p:messages id="messages" showDetail="true"/>
+	
+		<p:fieldset legend="messageTemplate: 'The file name is {name} and File size is {size}'">
+	    	<p:panelGrid columns="2">
+	    	
+		    	<h:outputText value="simple mode - CUSTOM message template" />
+				<h:form enctype="multipart/form-data" id="simpleCustomForm">    
+			    <p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="simple" skinSimple="true" sizeLimit="10240" messageTemplate="The file name is {name} and File size is {size}"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+	    	
+		    	<h:outputText value="simple mode - multiple - CUSTOM message template" />
+				<h:form enctype="multipart/form-data" id="simpleMultipleCustomForm">    
+			    <p:fileUpload value="#{fileUploadView.files}" id="uploader" mode="simple" skinSimple="true" sizeLimit="10240"  messageTemplate="The file name is {name} and File size is {size}" multiple="true"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send" 
+			        	action="#{fileUploadView.uploadMultiple}"/>
+			    </h:form>
+			    
+		    	<h:outputText value="advanced mode - CUSTOM message template" />
+				<h:form enctype="multipart/form-data" id="advancedCustomForm">    
+			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240" messageTemplate="The file name is {name} and File size is {size}"
+			    		listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+			    </h:form>
+			    
+		    	<h:outputText value="advanced mode with auto=true - CUSTOM message template" />
+				<h:form enctype="multipart/form-data" id="advancedAutoCustomForm">    
+			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240" messageTemplate="The file name is {name} and File size is {size}"
+			    		listener="#{fileUploadView.handleFileUpload}" auto="true" update="messages"/>
+			    </h:form>
+			    
+		    	<h:outputText value="advanced mode - Multiple - CUSTOM message template" />
+				<h:form enctype="multipart/form-data" id="advancedMultipleCustomForm">    
+			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240"  messageTemplate="The file name is {name} and File size is {size}" multiple="true"
+			    		listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+			    </h:form>
+			    
+		    	<h:outputText value="advanced mode with auto=true - Multiple - CUSTOM message template" />
+				<h:form enctype="multipart/form-data" id="advancedMultipleAutoCustomForm">    
+			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240"  messageTemplate="The file name is {name} and File size is {size}" multiple="true"
+			    		listener="#{fileUploadView.handleFileUpload}" auto="true" update="messages"/>
+			    </h:form>
+			    
+		    </p:panelGrid>
+		    
+	    </p:fieldset>
+	
+    </h:body>
+</html>
