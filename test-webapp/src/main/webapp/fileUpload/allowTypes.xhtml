@@ -12,76 +12,76 @@
     
    		<p:messages id="messages" showDetail="true"/>
 	
-		<p:fieldset legend="sizeLimit validation: max 10 KB">
+		<p:fieldset legend="allowTypes validation: /(\.|\/)(png)$/">
 	    	<p:panelGrid columns="2">
 	    	
 		    	<h:outputText value="simple mode - default message" />
 				<h:form enctype="multipart/form-data" id="simpleForm">    
-			    	<p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="simple" skinSimple="true" sizeLimit="10240" />
+			    	<p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(png)$/" />
 			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send" 
 			        	action="#{fileUploadView.upload}"/>
 			    </h:form>
 		    	<h:outputText value="simple mode - CUSTOM message" />
 				<h:form enctype="multipart/form-data" id="simpleCustomForm">    
-			    <p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="simple" skinSimple="true" sizeLimit="10240" invalidSizeMessage="File is too large"/>
+			    <p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(png)$/" invalidFileMessage="File type not allowed"/>
 			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send" 
 			        	action="#{fileUploadView.upload}"/>
 			    </h:form>
 	    	
 		    	<h:outputText value="simple mode - multiple - default message" />
 				<h:form enctype="multipart/form-data" id="simpleMultipleForm">    
-			    	<p:fileUpload value="#{fileUploadView.files}" id="uploader" mode="simple" skinSimple="true" sizeLimit="10240" multiple="true"/>
+			    	<p:fileUpload value="#{fileUploadView.files}" id="uploader" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(png)$/" multiple="true"/>
 			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send" 
 			        	action="#{fileUploadView.uploadMultiple}"/>
 			    </h:form>
 		    	<h:outputText value="simple mode - multiple - CUSTOM message" />
 				<h:form enctype="multipart/form-data" id="simpleMultipleCustomForm">    
-			    <p:fileUpload value="#{fileUploadView.files}" id="uploader" mode="simple" skinSimple="true" sizeLimit="10240" invalidSizeMessage="File is too large" multiple="true"/>
+			    <p:fileUpload value="#{fileUploadView.files}" id="uploader" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(png)$/" invalidFileMessage="File type not allowed" multiple="true"/>
 			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send" 
 			        	action="#{fileUploadView.uploadMultiple}"/>
 			    </h:form>
 			    
 		    	<h:outputText value="advanced mode - default message" />
 				<h:form enctype="multipart/form-data" id="advancedForm">    
-			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240" update="messages"
+			    	<p:fileUpload mode="advanced" id="uploader" allowTypes="/(\.|\/)(png)$/" update="messages"
 			    		listener="#{fileUploadView.handleFileUpload}"/>
 			    </h:form>
 		    	<h:outputText value="advanced mode - CUSTOM message" />
 				<h:form enctype="multipart/form-data" id="advancedCustomForm">    
-			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240" invalidSizeMessage="File is too large"
+			    	<p:fileUpload mode="advanced" id="uploader" allowTypes="/(\.|\/)(png)$/" invalidFileMessage="File type not allowed"
 			    		listener="#{fileUploadView.handleFileUpload}" update="messages"/>
 			    </h:form>
 			    
 			    <h:outputText value="advanced mode with auto=true - default message" />
 				<h:form enctype="multipart/form-data" id="advancedAutoForm">    
-			    	<p:fileUpload mode="advanced" id="uploader"  sizeLimit="10240"
+			    	<p:fileUpload mode="advanced" id="uploader"  allowTypes="/(\.|\/)(png)$/"
 			    		listener="#{fileUploadView.handleFileUpload}" auto="true" update="messages"/>
 			    </h:form>
 		    	<h:outputText value="advanced mode with auto=true - CUSTOM message" />
 				<h:form enctype="multipart/form-data" id="advancedAutoCustomForm">    
-			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240" invalidSizeMessage="File is too large"
+			    	<p:fileUpload mode="advanced" id="uploader" allowTypes="/(\.|\/)(png)$/" invalidFileMessage="File type not allowed"
 			    		listener="#{fileUploadView.handleFileUpload}" auto="true" update="messages"/>
 			    </h:form>
 			    
 		    	<h:outputText value="advanced mode - Multiple - default message" />
 				<h:form enctype="multipart/form-data" id="advancedMultipleForm">    
-			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240" multiple="true"
+			    	<p:fileUpload mode="advanced" id="uploader" allowTypes="/(\.|\/)(png)$/" multiple="true"
 			    		listener="#{fileUploadView.handleFileUpload}" update="messages"/>
 			    </h:form>
 		    	<h:outputText value="advanced mode - Multiple - CUSTOM message" />
 				<h:form enctype="multipart/form-data" id="advancedMultipleCustomForm">    
-			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240" invalidSizeMessage="File is too large" multiple="true"
+			    	<p:fileUpload mode="advanced" id="uploader" allowTypes="/(\.|\/)(png)$/" invalidFileMessage="File type not allowed" multiple="true"
 			    		listener="#{fileUploadView.handleFileUpload}" update="messages"/>
 			    </h:form>
 			    
 			    <h:outputText value="advanced mode with auto=true - Multiple - default message" />
 				<h:form enctype="multipart/form-data" id="advancedMultipleAutoForm">    
-			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240" multiple="true"
+			    	<p:fileUpload mode="advanced" id="uploader" allowTypes="/(\.|\/)(png)$/" multiple="true"
 			    		listener="#{fileUploadView.handleFileUpload}" auto="true" update="messages"/>
 			    </h:form>
 		    	<h:outputText value="advanced mode with auto=true - Multiple - CUSTOM message" />
 				<h:form enctype="multipart/form-data" id="advancedMultipleAutoCustomForm">    
-			    	<p:fileUpload mode="advanced" id="uploader" sizeLimit="10240" invalidSizeMessage="File is too large" multiple="true"
+			    	<p:fileUpload mode="advanced" id="uploader" allowTypes="/(\.|\/)(png)$/" invalidFileMessage="File type not allowed" multiple="true"
 			    		listener="#{fileUploadView.handleFileUpload}" auto="true" update="messages"/>
 			    </h:form>
 			    

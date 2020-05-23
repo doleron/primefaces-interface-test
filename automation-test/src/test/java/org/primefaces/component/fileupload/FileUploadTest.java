@@ -33,6 +33,7 @@ public abstract class FileUploadTest {
         
         ChromeOptions options = new ChromeOptions();
         options.addArguments("window-size=1024x768");
+        options.addArguments("--no-sandbox");
 
         String headless = System.getProperty("selenium.run.headless");
         if (headless == null || headless.equalsIgnoreCase("true")) {

@@ -1,9 +1,9 @@
-package org.primefaces.component.fileupload.cases.novalidation;
+package org.primefaces.component.fileupload.cases.novalidation.advanced;
 
 import org.openqa.selenium.By;
 import org.primefaces.component.fileupload.FileUploadTest;
 
-public class AdvancedTest extends FileUploadTest {
+public class SingleTest extends FileUploadTest {
 
     @Override
     public void execute() throws Exception {

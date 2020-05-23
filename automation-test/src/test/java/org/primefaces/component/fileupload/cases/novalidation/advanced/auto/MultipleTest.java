@@ -1,9 +1,9 @@
-package org.primefaces.component.fileupload.cases.novalidation;
+package org.primefaces.component.fileupload.cases.novalidation.advanced.auto;
 
 import org.openqa.selenium.By;
 import org.primefaces.component.fileupload.FileUploadTest;
 
-public class AdvancedAutoMultipleTest extends FileUploadTest {
+public class MultipleTest extends FileUploadTest {
 
     @Override
     public void execute() throws Exception {

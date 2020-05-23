@@ -1,24 +1,26 @@
-package org.primefaces.component.fileupload.cases.sizelimit;
+package org.primefaces.component.fileupload.cases.filelimit.simple;
 
 import org.openqa.selenium.By;
 import org.primefaces.component.fileupload.FileUploadTest;
 
-public class SimpleMultipleTest extends FileUploadTest {
+public class MultipleCustomTest extends FileUploadTest {
 
     @Override
     public void execute() throws Exception {
         
-        this.init("fileUpload/sizeLimit.xhtml");
+        this.init("fileUpload/fileLimit.xhtml");
         
-        String formId = "simpleMultipleForm";
+        String formId = "simpleMultipleCustomForm";
         
-        this.input(formId + ":uploader_input", "test_images/large-banana.png", "test_images/small-banana.png");
+        final String invalidMessage = "Max number of files reached";
         
-        this.assertContainsText(By.id(formId + ":uploader"), "Invalid file size: large-banana.png 98.7 KB");
+        this.input(formId + ":uploader_input", "test_images/large-banana.png", "test_images/small-banana.png", "test_images/banana-JPG.jpg");
+        
+        this.assertContainsText(By.id(formId + ":uploader"), invalidMessage);
         
         this.input(formId + ":uploader_input", "test_images/small-banana.png", "test_images/banana-JPG.jpg");
         
-        this.assertNotContainsText(By.id(formId + ":uploader"), "Invalid file size");
+        this.assertNotContainsText(By.id(formId + ":uploader"), invalidMessage);
         
         this.assertContainsText(By.id(formId + ":uploader"), "small-banana.png 8.4 KB + 1");
         

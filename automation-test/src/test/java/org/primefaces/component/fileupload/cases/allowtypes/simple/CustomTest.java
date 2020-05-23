@@ -1,24 +1,26 @@
-package org.primefaces.component.fileupload.cases.sizelimit;
+package org.primefaces.component.fileupload.cases.allowtypes.simple;
 
 import org.openqa.selenium.By;
 import org.primefaces.component.fileupload.FileUploadTest;
 
-public class SimpleTest extends FileUploadTest {
+public class CustomTest extends FileUploadTest {
 
     @Override
     public void execute() throws Exception {
+
+    	this.init("fileUpload/allowTypes.xhtml");
         
-        this.init("fileUpload/sizeLimit.xhtml");
+        String formId = "simpleCustomForm";
         
-        String formId = "simpleForm";
+        final String invalidMessage = "File type not allowed";
         
-        this.input(formId + ":uploader_input", "test_images/large-banana.png");
+        this.input(formId + ":uploader_input", "test_images/banana-JPG.jpg");
         
-        this.assertContainsText(By.id(formId + ":uploader"), "Invalid file size: large-banana.png 98.7 KB");
+        this.assertContainsText(By.id(formId + ":uploader"), invalidMessage + ": banana-JPG.jpg 4.3 KB");
         
         this.input(formId + ":uploader_input", "test_images/small-banana.png");
         
-        this.assertNotContainsText(By.id(formId + ":uploader"), "Invalid file size");
+        this.assertNotContainsText(By.id(formId + ":uploader"), invalidMessage);
         
         this.assertContainsText(By.id(formId + ":uploader"), "small-banana.png 8.4 KB");
         
