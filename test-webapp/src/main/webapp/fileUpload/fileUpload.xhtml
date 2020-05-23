@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>PrimeFaces Test</title>
+    </h:head>
+    <h:body>
+    
+   		<p:messages id="messages" showDetail="true"/>
+    
+		<p:fieldset legend="base case - no validation">
+			
+	    	<p:panelGrid columns="2">
+		    	<h:outputText value="simple mode" />
+		    	<h:form enctype="multipart/form-data" id="simpleForm">    
+			    	<p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="simple" skinSimple="true"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send"
+			        	action="#{fileUploadView.upload}"/>
+	    		</h:form>
+		    	<h:outputText value="simple mode multiple" />
+	    		<h:form enctype="multipart/form-data" id="simpleMultipleForm">    
+			    	<p:fileUpload value="#{fileUploadView.files}" id="uploader" mode="simple" skinSimple="true" multiple="true"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send"
+			        	action="#{fileUploadView.uploadMultiple}"/>
+	    		</h:form>
+	    		
+		    	<h:outputText value="advanced mode" />
+	    		<h:form enctype="multipart/form-data" id="advancedForm">  
+			    	<p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="advanced" 
+			        	listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+	    		</h:form>
+		    	<h:outputText value="advanced mode multiple" />
+	    		<h:form enctype="multipart/form-data" id="advancedMultipleForm">  
+			    	<p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="advanced" multiple="true"
+			        	listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+	    		</h:form>
+	    		
+		    	<h:outputText value="advanced mode with auto=true" />
+	    		<h:form enctype="multipart/form-data">  
+			    	<p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="advanced" auto="true" 
+			      		listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+	    		</h:form>
+		    	<h:outputText value="advanced mode with auto=true multiple" />
+	    		<h:form enctype="multipart/form-data">  
+			    	<p:fileUpload value="#{fileUploadView.files}" id="uploader" mode="advanced"  multiple="true" auto="true" 
+			      		listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+	    		</h:form>
+	    		
+		    </p:panelGrid>
+		    
+	    </p:fieldset>
+	
+		<p:fieldset legend="sizeLimit validation: max 10 KB">
+	    	<p:panelGrid columns="2">
+	    	
+		    	<h:outputText value="simple mode - default message" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" sizeLimit="10240" />
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+		    	<h:outputText value="simple mode - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+			    <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" sizeLimit="10240" invalidSizeMessage="File to big"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+			    
+		    	<h:outputText value="advanced mode - default message" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" sizeLimit="10240"
+			    		listener="#{fileUploadView.handleFileUpload}"/>
+			    </h:form>
+		    	<h:outputText value="advanced mode with auto = false - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" sizeLimit="10240" invalidSizeMessage="File to big"
+			    		listener="#{fileUploadView.handleFileUpload}"/>
+			    </h:form>
+			    
+			    <h:outputText value="advanced mode with auto=true - default message" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" sizeLimit="10240"
+			    		listener="#{fileUploadView.handleFileUpload}" auto="true"/>
+			    </h:form>
+		    	<h:outputText value="advanced mode with auto=true - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" sizeLimit="10240" invalidSizeMessage="File to big"
+			    		listener="#{fileUploadView.handleFileUpload}" auto="true"/>
+			    </h:form>
+			    
+		    </p:panelGrid>
+		    
+	    </p:fieldset>
+	
+		<p:fieldset legend="allowTypes validation: /(\.|\/)(png)$/">
+	    	<p:panelGrid columns="2">
+		    	<h:outputText value="simple mode - default message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(png)$/" />
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+			    <h:outputText value="simple mode - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(png)$/" invalidFileMessage="File type not allowed"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+			    
+			    <h:outputText value="advanced mode - default message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.file}" mode="advanced" allowTypes="/(\.|\/)(png)$/"/>
+			    </h:form>
+			    <h:outputText value="advanced mode - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.file}" mode="advanced" allowTypes="/(\.|\/)(png)$/" invalidFileMessage="File type not allowed"/>
+			    </h:form>
+			    
+			    <h:outputText value="advanced mode with auto=true - default message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.file}" mode="advanced" allowTypes="/(\.|\/)(png)$/" auto="true"/>
+			    </h:form>
+			    <h:outputText value="advanced mode with auto=true - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.file}" mode="advanced" allowTypes="/(\.|\/)(png)$/" invalidFileMessage="File type not allowed" auto="true"/>
+			    </h:form>
+			    
+	    	</p:panelGrid>
+		    	
+	    </p:fieldset>
+	
+		<p:fieldset legend="fileLimit: max 2 files">
+	    	<p:panelGrid columns="2">
+	    	
+	    		<h:outputText value="simple mode - default message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.files}" mode="simple" skinSimple="true" multiple="true" 
+				    	fileLimit="2"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+	    		<h:outputText value="simple mode - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.files}" mode="simple" skinSimple="true" multiple="true" 
+				    	fileLimit="2" fileLimitMessage="Max number of files reached"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+			    
+			    <h:outputText value="advanced mode - default message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.files}" mode="advanced" multiple="true" 
+				    	fileLimit="2"/>
+			    </h:form>
+			    <h:outputText value="advanced mode - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.files}" mode="advanced" multiple="true" 
+				    	fileLimit="2" fileLimitMessage="Max number of files reached"/>
+			    </h:form>
+			    
+			    <h:outputText value="advanced mode with auto=true - default message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.files}" mode="advanced" multiple="true" 
+				    	fileLimit="2" auto="true"/>
+			    </h:form>
+			    <h:outputText value="advanced mode with auto=true - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.files}" mode="advanced" multiple="true" 
+				    	fileLimit="2" fileLimitMessage="Max number of files reached" auto="true"/>
+			    </h:form>
+			    
+	    	</p:panelGrid>
+		    	
+	    </p:fieldset>
+	
+		<p:fieldset legend="multiple + validation">
+	    	<p:panelGrid columns="2">
+	    		<h:outputText value="simple mode - default message" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.files}" mode="simple" skinSimple="true" multiple="true" sizeLimit="10240" allowTypes="/(\.|\/)(png)$/"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+	    		<h:outputText value="simple mode - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.files}" mode="simple" skinSimple="true" multiple="true" sizeLimit="10240" allowTypes="/(\.|\/)(png)$/"
+				         invalidFileMessage="File type not allowed" invalidSizeMessage="File to big"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+			    
+			    <h:outputText value="advanced mode - default message" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.files}" mode="advanced" multiple="true" sizeLimit="10240" allowTypes="/(\.|\/)(png)$/"/>
+			    </h:form>
+			    <h:outputText value="advanced mode - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.files}" mode="advanced" multiple="true" sizeLimit="10240" allowTypes="/(\.|\/)(png)$/"
+				         invalidFileMessage="File type not allowed" invalidSizeMessage="File to big"/>
+			    </h:form>
+			    
+			    <h:outputText value="advanced mode with auto=true - default message" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.files}" mode="advanced" multiple="true" sizeLimit="10240" allowTypes="/(\.|\/)(png)$/"
+			    		 auto="true"/>
+			    </h:form>
+			    <h:outputText value="advanced mode with auto=true - CUSTOM message" />
+				<h:form enctype="multipart/form-data">    
+				    <p:fileUpload value="#{fileUploadView.files}" mode="advanced" multiple="true" sizeLimit="10240" allowTypes="/(\.|\/)(png)$/"
+				         invalidFileMessage="File type not allowed" invalidSizeMessage="File to big" 
+				         auto="true"/>
+			    </h:form>
+			    
+	    	</p:panelGrid>
+	    </p:fieldset>
+	
+		<p:fieldset legend="messageTemplate: 'The file name is {name} and File size is {size}'">
+		
+	    	<p:panelGrid columns="2">
+	    		<h:outputText value="simple mode - default template" />
+				<h:form enctype="multipart/form-data">  
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" sizeLimit="10240"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+	    		<h:outputText value="simple mode - CUSTOM template" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="simple" skinSimple="true" sizeLimit="10240" messageTemplate="The file name is {name} and File size is {size}"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" 
+			        	action="#{fileUploadView.upload}"/>
+			    </h:form>
+			    
+	    		<h:outputText value="advanced mode - default template" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" sizeLimit="10240"/>
+			    </h:form>
+	    		<h:outputText value="advanced mode - CUSTOM template" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" sizeLimit="10240" messageTemplate="The file name is {name} and File size is {size}"/>
+			    </h:form>
+			    
+	    		<h:outputText value="advanced mode with auto=true - default template" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" sizeLimit="10240" auto="true"/>
+			    </h:form>
+	    		<h:outputText value="advanced mode with auto=true - CUSTOM template" />
+				<h:form enctype="multipart/form-data">    
+			    	<p:fileUpload value="#{fileUploadView.file}" mode="advanced" sizeLimit="10240" messageTemplate="The file name is {name} and File size is {size}"
+			    		auto="true"/>
+			    </h:form>
+			    
+	    	</p:panelGrid>
+		    	
+	    </p:fieldset>
+
+    </h:body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>PrimeFaces Test - File Upload</title>
+    </h:head>
+    
+    <h:body>
+    
+   		<p:messages id="messages" showDetail="true"/>
+    
+		<p:fieldset legend="base case - no validation">
+			
+	    	<p:panelGrid columns="2">
+		    	<h:outputText value="simple mode" />
+		    	<h:form enctype="multipart/form-data" id="simpleForm">    
+			    	<p:fileUpload value="#{fileUploadView.file}" id="uploader" mode="simple" skinSimple="true"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send"
+			        	action="#{fileUploadView.upload}"/>
+	    		</h:form>
+		    	<h:outputText value="simple mode multiple" />
+	    		<h:form enctype="multipart/form-data" id="simpleMultipleForm">    
+			    	<p:fileUpload value="#{fileUploadView.files}" id="uploader" mode="simple" skinSimple="true" multiple="true"/>
+			    	<p:commandButton value="Submit non-Ajax" ajax="false" id="send"
+			        	action="#{fileUploadView.uploadMultiple}"/>
+	    		</h:form>
+	    		
+		    	<h:outputText value="advanced mode" />
+	    		<h:form enctype="multipart/form-data" id="advancedForm">  
+			    	<p:fileUpload id="uploader" mode="advanced" 
+			        	listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+	    		</h:form>
+		    	<h:outputText value="advanced mode multiple" />
+	    		<h:form enctype="multipart/form-data" id="advancedMultipleForm">  
+			    	<p:fileUpload id="uploader" mode="advanced" multiple="true"
+			        	listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+	    		</h:form>
+	    		
+		    	<h:outputText value="advanced mode with auto=true" />
+	    		<h:form enctype="multipart/form-data" id="advancedAutoForm">  
+			    	<p:fileUpload id="uploader" mode="advanced" auto="true" 
+			      		listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+	    		</h:form>
+		    	<h:outputText value="advanced mode with auto=true multiple" />
+	    		<h:form enctype="multipart/form-data" id="advancedAutoMultipleForm">  
+			    	<p:fileUpload id="uploader" mode="advanced"  multiple="true" auto="true" 
+			      		listener="#{fileUploadView.handleFileUpload}" update="messages"/>
+	    		</h:form>
+	    		
+		    </p:panelGrid>
+		    
+	    </p:fieldset>
+	
+    </h:body>
+</html>
