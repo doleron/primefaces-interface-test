@@ -1,5 +1,8 @@
 # primefaces-interface-test
-An automation test suit for PrimeFaces JSF components
+
+An automation test suit for PrimeFaces JSF components.
+
+In the current stage, there are tests for [FileUpload](https://www.primefaces.org/showcase/ui/file/upload/multiple.xhtml) component only.
 
 This project consists of two sub projects:
 
