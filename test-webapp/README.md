@@ -1,5 +1,18 @@
-This is a webapp maven project that uses <strong>PF9.0-SNAPSHOT</strong> version for automation test purposes based on https://github.com/primefaces/primefaces-test.
+#About
 
-Execute with <strong>mvn jetty:run</strong> command and hit <strong>http://localhost:8080/primefaces-test-webapp</strong> to run the page.
+This is a webapp maven project aiming to perform interface tests over PrimeFaces components.
 
-Refer to https://github.com/primefaces/primefaces-test for more details about the configuration of this application.
+This is configured to use PrimeFaces 9.0-SNAPSHOT. Check the file pom.xml to change the primefaces version.
+
+# Runnning
+
+To execute this applicatio run the following command:
+
+`mvn jetty:run`
+
+This command starts a jetty server. The application can be accessed in the address: http://localhost:8080/primefaces-test-webapp
+
+# Configuration
+
+This project is based on primefaces-test project: https://github.com/primefaces/primefaces-test
+Refer to primefaces-test project description for more details about how to configuration the application.
