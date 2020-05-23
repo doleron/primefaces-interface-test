@@ -11,7 +11,7 @@ This project consists of two sub projects:
 
 In current stage, there are tests for [FileUpload](https://www.primefaces.org/showcase/ui/file/upload/multiple.xhtml) component only.
 
-Tests running are executed using the following browsers/drivers
+Tests are executed using the following browsers/drivers:
 
 - Chromium ChromeDriver: https://chromedriver.chromium.org/
 - Mozilla GeckoDriver: https://github.com/mozilla/geckodriver
