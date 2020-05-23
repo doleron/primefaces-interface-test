@@ -25,12 +25,13 @@ Please check the Configuration section below for more details.
 ## Configuration
 
 - Make sure you have the web drivers
+
  - [chromedriver](https://chromedriver.chromium.org/) 
- - 
+ - [geckodriver] (https://github.com/mozilla/geckodriver)
  
  executables in somewhere of your computer and set the parameters `-Dwebdriver.chrome.driver` and  `webdriver.gecko.driver` properly.
 
-- `-Dselenium.run.headless` can be set to `false` to show the browser screen during each test run.
+- `selenium.run.headless` can be set to `false` showing the browser screen during each test run.
 - If `selenium.quit.browser.after.run` is `false` the browser screen will keep visible after the test finishes. 
 
 ## Generating reports
